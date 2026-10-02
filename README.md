@@ -87,6 +87,24 @@ API credentials come from
 <https://addons.mozilla.org/developers/addon/api/key/>. Download the signed
 `.xpi`, then install it via `about:addons` → ⚙️ → **Install Add-on From File…**.
 
+## Using the extension
+
+Once installed, the extension works like the official Shazam one:
+
+1. Play audio in a tab — a song in a YouTube video, a stream, a web player, etc.
+2. Click the **Shazam** icon in the Firefox toolbar.
+3. Press **listen** in the popup. It captures a few seconds of the tab's audio
+   and identifies the track, then shows the title, artist, and a link.
+4. Identified songs are kept in the popup's **history**.
+
+Notes:
+
+- It identifies audio playing **in the browser tab**, not from your microphone.
+- Capturing from embedded cross-origin players (e.g. a YouTube iframe) needs the
+  optional all-sites permission. Grant it in `about:addons` → the extension →
+  **Permissions** if a capture comes back silent.
+- Requires **Firefox 149+** (see [Requirements](#requirements)).
+
 ## Keeping up with Shazam updates
 
 The patches target specific minified code and hashed class names in Shazam's
