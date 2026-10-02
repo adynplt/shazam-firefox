@@ -1,0 +1,47 @@
+/* Chrome's built-in defaults that the popup relies on but Firefox lacks.
+   Values are Chrome's on Windows. */
+
+/* Chrome injects a stylesheet into extension pages that sets the body font
+   (IDS_WEB_FONT_FAMILY at 75%). The popup declares no font of its own;
+   Firefox would fall back to a 16px serif font. ff-popup.js swaps the family
+   for UI languages Chrome uses a different list for. */
+body {
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  font-size: 75%;
+}
+
+/* Chrome's form controls default to Arial with 6px inline padding; Firefox's
+   use the "MS Shell Dlg 2" system font with 4px. The popup's buttons set
+   size and weight only. */
+button {
+  font-family: Arial, sans-serif;
+}
+:where(button) {
+  padding-inline: 6px;
+}
+
+/* Blink's `line-height: normal` for Arial button text (set per element by
+   ff-popup.js); the popup's own line heights still win. */
+:where([data-ff-arial-lh]) {
+  line-height: var(--ff-arial-lh);
+}
+
+/* Chrome renders the default `outline: auto` focus ring as a 2px #101010
+   ring with a 1px white outer edge; Firefox draws a blue accent ring.
+   Zero specificity so the popup's own focus styles still win. */
+:where(:focus-visible) {
+  outline: 2px solid #101010;
+  outline-offset: -1px;
+  box-shadow: 0 0 0 2px #fff;
+}
+/* Menu items bring their own focus outline; don't add the white edge. */
+:where([role="menuitem"]):focus-visible {
+  box-shadow: none;
+}
+
+/* The library rows' hover controls slide in with a transform that overflows
+   the list by 2px; Gecko then makes it horizontally scrollable and its hidden
+   scrollbar flips the hover on and off. Chrome never scrolls it sideways. */
+.RLHtwz_RlwPoJIR5A33T {
+  overflow-x: hidden;
+}

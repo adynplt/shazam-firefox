@@ -1,0 +1,10 @@
+# Normalize line endings: store LF in the repo, check out native on each OS.
+* text=auto eol=lf
+
+# Explicit per-type (defensive)
+*.py    text eol=lf
+*.js    text eol=lf
+*.css   text eol=lf
+*.md    text eol=lf
+*.json  text eol=lf
+LICENSE text eol=lf
